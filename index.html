@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clock</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        body{
+            background: url("static/bg.png");    
+            background-repeat: no-repeat; 
+            background-position: center;
+            object-fit: cover;
+
+        }
+        .clock {
+            width: 600px;
+            height: 300px;
+            background: rgba(2, 2, 2, 0.4);
+            color: rgb(250, 249, 248);
+            top: 50%;
+            left: 50%;
+            transform: translate(60%, 50%);
+            text-align: center;
+            padding: 50px 40px 0px 40px;
+            border-radius: 5px;
+        }
+
+        #current-time {
+            font-size: 90px;
+        }
+
+        p {
+            font-size: 13px;
+            color: rgb(255, 255, 254);
+            margin-top: 20px;
+            font-family: cursive;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <h1 id="current-time">{{time}}</h1>
+        <hr>
+        <h1>{{day}} , {{date}}</h1>
+        <p>"Time is a created thing. To say 'I don't have time' is like saying, 'I don't want to.'"</p>
+    </div>
+    <script>
+        // Function to update the time every second
+        function updateTime() {
+            const currentTimeElement = document.getElementById("current-time");
+            setInterval(function () {
+                const now = new Date();
+                const currentTime = now.toLocaleTimeString();
+                currentTimeElement.textContent = currentTime;
+            }, 1000); // Update every 1000 milliseconds (1 second)
+        }
+
+        // Call the updateTime function when the page loads
+        window.onload = updateTime;
+    </script>
+</body>
+
+</html>
